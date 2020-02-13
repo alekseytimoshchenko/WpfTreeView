@@ -54,6 +54,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Directory\Data\DirectoryItem.cs" />
+    <Compile Include="Directory\Data\DirectoryItemType.cs" />
+    <Compile Include="Directory\DirectoryStructure.cs" />
     <Compile Include="HeaderToImageConverter.cs" />
     <Compile Include="stirng.cs" />
     <Page Include="MainWindow.xaml">
