@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace WpfTreeView
@@ -16,7 +15,7 @@ namespace WpfTreeView
         public static List<DirectoryItem> GetLogicalDrives()
         {
             // Get every logical drive on the machine
-            return Directory.GetLogicalDrives().Select(drive => new DirectoryItem
+            return System.IO.Directory.GetLogicalDrives().Select(drive => new DirectoryItem
             {
                 FullPath = drive,
                 Type = DirectoryItemType.Drive
@@ -39,23 +38,25 @@ namespace WpfTreeView
             // ignoring any issues doing so
             try
             {
-                var dirs = Directory.GetDirectories(fullPath);
+                var dirs = System.IO.Directory.GetDirectories(fullPath);
 
                 if (dirs.Length > 0)
                     items.AddRange(dirs.Select(dir => new DirectoryItem
                     {
-                        FullPath = dir, 
+                        FullPath = dir,
                         Type = DirectoryItemType.Folder
                     }));
             }
             catch { }
+
+            #endregion
 
             #region Get Files
             // Try and get files from the folder
             // ignoring any issues doing so
             try
             {
-                var fs = Directory.GetFiles(fullPath);
+                var fs = System.IO.Directory.GetFiles(fullPath);
 
                 if (fs.Length > 0)
                     items.AddRange(fs.Select(file => new DirectoryItem()

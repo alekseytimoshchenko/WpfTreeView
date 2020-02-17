@@ -18,12 +18,6 @@
         /// <summary>
         /// The name of this directory item
         /// </summary>
-        public string Name
-        {
-            get
-            {
-                return Type == DirectoryItemType.Drive ? FullPath : DirectoryStructure.GetFileFolderName(FullPath);
-            }
-        }
+        public string Name => Type == DirectoryItemType.Drive ? FullPath : DirectoryStructure.GetFileFolderName(FullPath);
     }
 }
