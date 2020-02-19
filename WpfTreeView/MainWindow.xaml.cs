@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using WpfTreeView.Directory.ViewModels.Base;
 
 namespace WpfTreeView
 {
@@ -15,6 +16,7 @@ namespace WpfTreeView
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new DirectoryStructureViewModel();
         }
 
         #endregion

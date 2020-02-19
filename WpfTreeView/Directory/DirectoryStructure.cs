@@ -12,15 +12,13 @@ namespace WpfTreeView
         /// Gets all logical drives on the computer
         /// </summary>
         /// <returns></returns>
-        public static List<DirectoryItem> GetLogicalDrives()
-        {
+        public static List<DirectoryItem> GetLogicalDrives() =>
             // Get every logical drive on the machine
-            return System.IO.Directory.GetLogicalDrives().Select(drive => new DirectoryItem
+            System.IO.Directory.GetLogicalDrives().Select(drive => new DirectoryItem
             {
                 FullPath = drive,
                 Type = DirectoryItemType.Drive
             }).ToList();
-        }
 
         /// <summary>
         /// Gets the directories top-level content

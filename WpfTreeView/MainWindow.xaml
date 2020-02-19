@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
 
-    <StackPanel>
+    <!--<StackPanel>
         <Grid>
             <TreeView x:Name="FolderView">
                 <TreeView.Resources>
@@ -31,6 +31,33 @@
                         </Setter>
                     </Style>
                 </TreeView.Resources>
+            </TreeView>
+        </Grid>
+
+    </StackPanel>-->
+
+
+    <StackPanel>
+        <Grid>
+            <TreeView x:Name="FolderView" ItemsSource="{Binding Items}">
+                <TreeView.ItemContainerStyle>
+                    <Style TargetType="{x:Type TreeViewItem}">
+                        <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}"/>
+                    </Style>
+                </TreeView.ItemContainerStyle>
+
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image 
+                                        Width="20" 
+                                        Margin="3"
+                                        Source="{Binding Type,
+                                        Converter={x:Static local:HeaderToImageConverter.Instance}}" />
+                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
             </TreeView>
         </Grid>
 

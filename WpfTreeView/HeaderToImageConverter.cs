@@ -21,27 +21,17 @@ namespace WpfTreeView
         /// <returns></returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            //Get the full path
-            var path = (string)value;
-
-            //If the path is null, ignore
-            if (path == null)
-                return null;
-
-            //Name of the file/folder
-            var name = DirectoryStructure.GetFileFolderName(path);
-
             //By default, we presume an image
             var image = "Images/file.png";
 
-            //If the name is blank, we presume it's a drive as we cannot have a blank file or folder name
-            if (string.IsNullOrEmpty(name))
+            switch ((DirectoryItemType)value)
             {
-                image = "Images/drive.png";
-            }
-            else if(new FileInfo(path).Attributes.HasFlag(FileAttributes.Directory))
-            {
-                image = "Images/folder-closed.png";
+                case DirectoryItemType.Drive:
+                    image = "Images/drive.png";
+                    break;
+                case DirectoryItemType.Folder:
+                    image = "Images/folder-closed.png";
+                    break;
             }
 
             return new BitmapImage(new Uri($"pack://application:,,,/{image}"));

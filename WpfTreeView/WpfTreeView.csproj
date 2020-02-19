@@ -64,7 +64,9 @@
     <Compile Include="Directory\Data\DirectoryItemType.cs" />
     <Compile Include="Directory\DirectoryStructure.cs" />
     <Compile Include="Directory\ViewModels\BaseViewModel.cs" />
+    <Compile Include="Directory\ViewModels\Base\DirectoryStructureViewModel.cs" />
     <Compile Include="Directory\ViewModels\DirectoryItemViewModel.cs" />
+    <Compile Include="Directory\ViewModels\RelayCommand.cs" />
     <Compile Include="HeaderToImageConverter.cs" />
     <Compile Include="stirng.cs" />
     <Page Include="MainWindow.xaml">
